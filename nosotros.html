@@ -6,7 +6,7 @@
 
   <title>La Casita Criolla | Nosotros</title>
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="./css/style.css" />
 
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,9 +151,13 @@
         <h2>La mente detrás de La Casita Criolla</h2>
       </div>
 
+      <p class="team-hint">
+        Haz doble clic en la tarjeta para conocer más sobre el emprendedor.
+      </p>
+
       <div class="team-container">
 
-        <article class="team-card">
+        <article class="team-card" ondblclick="abrirPerfil()">
           <div class="team-image">
             <img src="img/angel-abreu.png" alt="Foto de Angel Abreu Herrera">
           </div>
@@ -173,6 +177,47 @@
       </div>
     </section>
 
+    <!-- MODAL PERFIL -->
+    <div class="profile-modal" id="profileModal">
+      <div class="profile-box">
+        <button class="profile-close" onclick="cerrarPerfil()">×</button>
+
+        <div class="profile-header">
+          <img src="img/angel-abreu.png" alt="Foto de Angel Abreu Herrera">
+
+          <div>
+            <p class="profile-label">Equipo emprendedor</p>
+            <h2>Angel Abreu Herrera</h2>
+            <span>Creador de La Casita Criolla</span>
+          </div>
+        </div>
+
+        <div class="profile-content">
+          <p>
+            Angel Abreu Herrera es el emprendedor detrás de La Casita Criolla, un
+            proyecto gastronómico inspirado en la cultura dominicana, la comida
+            típica y el deseo de ofrecer una experiencia diferente, moderna y
+            acogedora.
+          </p>
+
+          <p>
+            Su visión con este proyecto es resaltar el sabor criollo de una forma
+            creativa, conectando la tradición dominicana con una imagen actual,
+            atractiva y cercana al público. La Casita Criolla representa su interés
+            por crear una marca con identidad, buen servicio y orgullo por nuestras
+            raíces.
+          </p>
+
+          <div class="profile-tags">
+            <span>Creatividad</span>
+            <span>Identidad dominicana</span>
+            <span>Emprendimiento</span>
+            <span>Pasión por el proyecto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer class="footer">
@@ -180,5 +225,31 @@
   </footer>
 
   <script src="js/script.js"></script>
+
+  <script>
+    function abrirPerfil() {
+      const modal = document.getElementById("profileModal");
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function cerrarPerfil() {
+      const modal = document.getElementById("profileModal");
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        cerrarPerfil();
+      }
+    });
+
+    document.getElementById("profileModal").addEventListener("click", function(event) {
+      if (event.target === this) {
+        cerrarPerfil();
+      }
+    });
+  </script>
 </body>
 </html>
